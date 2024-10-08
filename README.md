@@ -36,18 +36,16 @@ type: vertical-stack
 cards:
   - type: entities
     entities:
-      - entity: sensor.XXXXXXXXXX_balance
-      - entity: sensor.XXXXXXXXXX_current_level
-      - entity: sensor.XXXXXXXXXX_current_level_consume
-      - entity: sensor.XXXXXXXXXX_current_level_remain
-      - entity: sensor.XXXXXXXXXX_current_price
-      - entity: sensor.XXXXXXXXXX_year_consume
-      - entity: sensor.XXXXXXXXXX_year_consume_bill
-    title: 家1
+      - entity: sensor.address
+      - entity: sensor.allowance
+      - entity: sensor.month_bill
+      - entity: sensor.month_elec
+      - entity: sensor.price
+    title: 寝室
   - type: custom:flex-table-card
     title: 过去12个月用电情况
     entities:
-      include: sensor.XXXXXXXXXX_history*
+      include: sensor.history*
     columns:
       - name: 月份
         data: name
