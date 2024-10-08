@@ -1,0 +1,11 @@
+{
+  "domain": "homeassistant-sgcc",
+  "name": "舟山校区电量查询",
+  "version": "v1.0",
+  "documentation": "https://github.com/wenz1xv",
+  "issue_tracker": "https://github.com/wenz1xv",
+  "iot_class": "cloud_polling",
+  "dependencies": [],
+  "requirements": [],
+  "codeowners": ["@zyman"]
+}

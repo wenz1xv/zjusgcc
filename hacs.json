@@ -1,0 +1,5 @@
+{
+    "name": "舟山校区电量查询",
+    "domains": ["sensor"],
+    "render_readme": true
+}
