@@ -27,7 +27,7 @@ class SGCCData:
         }
 
     def getRoomInfo(self):
-        url = ROOMINFO_URL+ "{userId:+'" + str(self.userid) + "'}"
+        url = ROOMINFO_URL+ "{userId: '" + str(self.userid) + "'}"
         ret = True
         try:
             r = requests.post(url, headers=self.headers, timeout=10)
@@ -52,7 +52,7 @@ class SGCCData:
         return ret
     
     def getBill(self):
-        url = BILL_URL+ "{userId:+'" + str(self.userid) + "',+roomTag:+" + str(self.roomtag) + "'}"
+        url = BILL_URL+ "{userId: '" + str(self.userid) + "',+roomTag: '" + str(self.roomtag) + "'}"
         ret = True
         try:
             r = requests.post(url, headers=self.headers, timeout=10)
@@ -79,7 +79,7 @@ class SGCCData:
         now = datetime.datetime.now()
         year = now.year
         month = now.month
-        url = DETAIL_URL+ "{roomTag:+'" + str(self.roomtag) + "',+year:+" + str(year) + "',+year:+" + str(month) + "'}"
+        url = DETAIL_URL+ "{roomTag: '" + str(self.roomtag) + "', year: '" + str(year) + "', month: '" + str(month) + "'}"
         ret = True
         try:
             r = requests.post(url, headers=self.headers, timeout=10)
