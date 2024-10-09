@@ -17,7 +17,7 @@ async def async_setup(hass: HomeAssistant, hass_config: dict):
     config = hass_config[DOMAIN]
     certificate = config.get("certificate")
     userid = config.get("userid")
-    if certificate is not None or userid is not None:
+    if certificate is not None and userid is not None:
         coordinator = GJDWCorrdinator(hass, certificate, userid)
         hass.data[DOMAIN] = coordinator
         await coordinator.async_refresh()

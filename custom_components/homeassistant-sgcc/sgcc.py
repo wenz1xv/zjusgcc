@@ -4,7 +4,7 @@ import datetime
 
 _LOGGER = logging.getLogger(__name__)
 
-DETAIL_URL = "http://zdpay.ztendata.com/wx/zs/getUserBindingRoomInfo?data="
+DETAIL_URL = "http://zdpay.ztendata.com/wx/zs/dayBillDetails?data="
 ROOMINFO_URL = "http://zdpay.ztendata.com/wx/zs/getUserBindingRoomInfo?data="
 BILL_URL = "http://zdpay.ztendata.com/wx/zs/billAndRecharge?data="
 
@@ -27,7 +27,7 @@ class SGCCData:
         }
 
     def getRoomInfo(self):
-        url = BILL_URL+ "{userId:+'" + str(self.userid) + "'}"
+        url = ROOMINFO_URL+ "{userId:+'" + str(self.userid) + "'}"
         ret = True
         try:
             r = requests.post(url, headers=self.headers, timeout=10)
@@ -52,7 +52,7 @@ class SGCCData:
         return ret
     
     def getBill(self):
-        url = ROOMINFO_URL+ "{userId:+'" + str(self.userid) + "',+roomTag:+" + str(self.roomtag) + "'}"
+        url = BILL_URL+ "{userId:+'" + str(self.userid) + "',+roomTag:+" + str(self.roomtag) + "'}"
         ret = True
         try:
             r = requests.post(url, headers=self.headers, timeout=10)
