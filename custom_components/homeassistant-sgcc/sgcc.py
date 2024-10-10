@@ -7,6 +7,7 @@ _LOGGER = logging.getLogger(__name__)
 DETAIL_URL = "http://zdpay.ztendata.com/wx/zs/dayBillDetails?data="
 ROOMINFO_URL = "http://zdpay.ztendata.com/wx/zs/getUserBindingRoomInfo?data="
 BILL_URL = "http://zdpay.ztendata.com/wx/zs/billAndRecharge?data="
+UPDATE_URL = "http://zdpay.ztendata.com/wx/zs/realTime/getTheMargin?data="
 
 class SGCCData:
     def __init__(self, certificate, userid):
@@ -25,6 +26,27 @@ class SGCCData:
             "Connection": "keep-alive",
             "Accept": "*/*",
         }
+
+    def update(self):
+        url = UPDATE_URL+ "{roomTag: '" + str(self.roomtag) + "'}"
+        ret = True
+        try:
+            r = requests.post(url, headers=self.headers, timeout=10)
+            if r.status_code == 200:
+                _LOGGER.debug(f"get UPDATE: {r.text}")
+                result = r.json()
+                if result["code"] == 0:
+                    self._info["allowance"] = result["data"]
+                else:
+                    ret = False
+                    _LOGGER.error(f"get UPDATE:{result['msg']}")
+            else:
+                ret = False
+                _LOGGER.error(f"get UPDATE status_code = {r.status_code}")
+        except Exception as e:
+            ret = False
+            _LOGGER.error(f"get UPDATE got error: {e}")
+        return ret
 
     def getRoomInfo(self):
         url = ROOMINFO_URL+ "{userId: '" + str(self.userid) + "'}"
@@ -101,6 +123,7 @@ class SGCCData:
 
     def getData(self):
         if self.getRoomInfo():
+            self.update()
             self.getBill()
             self.getDetail()
         _LOGGER.debug(f"Data {self._info}")

@@ -13,22 +13,22 @@ SGCC_SENSORS = {
     },
     "allowance": {
         "name": "电费余额",
-        "icon": "hass:cash-100",
-        "unit_of_measurement": "元"
+        "icon": "mdi:wallet-bifold",
+        "unit_of_measurement": "CNY"
     },
     "month_bill": {
         "name": "本月电费",
         "icon": "hass:cash-100",
-        "unit_of_measurement": "元"
+        "unit_of_measurement": "CNY"
     },
     "month_elec": {
         "name": "本月用电",
-        "icon": "hass:cash-100",
-        "unit_of_measurement": "度"
+        "icon": "mdi:lightning-bolt",
+        "unit_of_measurement": "kWh"
     },
     "price": {
         "name": "当前电价",
-        "icon": "hass:cash-100",
+        "icon": "mdi:cart",
         "unit_of_measurement": "CNY/kWh"
     },
 }
