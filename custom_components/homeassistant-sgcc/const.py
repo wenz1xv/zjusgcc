@@ -1,1 +1,1 @@
-DOMAIN = "zju-sgcc"
+DOMAIN = "homeassistant-sgcc"
